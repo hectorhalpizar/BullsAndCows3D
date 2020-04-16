@@ -4,10 +4,11 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    PrintLine("Welcome to Bull and Cows\nPress the Enter Key to continue");
+    PrintLine(TEXT("Welcome to Bull and Cows\nPress the Enter Key to continue"));
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
+    FString HiddenWord = TEXT("subdermatoglyphic");
 }
