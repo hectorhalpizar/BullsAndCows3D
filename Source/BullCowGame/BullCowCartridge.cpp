@@ -8,49 +8,18 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     InitGame();
     // The Game lets the Player know how many Lives has left.
-    
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
-    
-
     // Validate if Player큦 Input is a valid isogram.
     if (bGameOver) {
         ClearScreen();
         InitGame();
+        return;
     }
-    else
-    {
-
-        if (HiddenWord == Input)
-        {
-            PrintLine(TEXT("Congratulations. YOU WIN!"));
-            EndGame();
-        }
-        else
-        {
-            if (Input.Len() != HiddenWord.Len()) {
-                PrintLine(FString::Printf(TEXT("The hidden word has %i letters."), HiddenWord.Len()));
-            }
-            else {
-                PrintLine(FString::Printf(TEXT("That큦 not the word to guess.")));
-            }
-
-            if (--Lives > 0)
-            {
-                PlayerStatus();
-            }
-            else {
-                PrintLine(TEXT("GAME OVER. YOU LOSE!"));
-                EndGame();
-            }
-        }
-    }
-
-    // Validate if player큦 lives are greater than zero
-    // Let the player know that the Input is not valid
-    // Decrease a life   
+    
+    ProcessGuess(Input);
 }
 
 void UBullCowCartridge::InitGame() {
@@ -68,4 +37,31 @@ void UBullCowCartridge::PlayerStatus() {
 void UBullCowCartridge::EndGame() {
     bGameOver = true;
     PrintLine(TEXT("Pless the Enter Key to play Again."));
+}
+
+void UBullCowCartridge::ProcessGuess(const FString& Input) {
+    if (HiddenWord == Input)
+    {
+
+        PrintLine(TEXT("Congratulations. YOU WIN!"));
+        EndGame();
+
+        return;
+    }
+    
+    if (Input.Len() != HiddenWord.Len()) {
+        PrintLine(FString::Printf(TEXT("The hidden word has %i letters."), HiddenWord.Len()));
+    }
+    else {
+        PrintLine(FString::Printf(TEXT("That큦 not the word to guess.")));
+    }
+
+    if (--Lives > 0)
+    {
+        PlayerStatus();
+    }
+    else {
+        PrintLine(TEXT("GAME OVER. YOU LOSE!"));
+        EndGame();
+    }
 }
