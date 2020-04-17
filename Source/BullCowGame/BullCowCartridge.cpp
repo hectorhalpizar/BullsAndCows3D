@@ -5,13 +5,13 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
     PrintLine(TEXT("Welcome to Bull and Cows\nPress the Enter Key to continue"));
+    HiddenWord = TEXT("cake");
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
-    FString HiddenWord = TEXT("cake");
-
+    
     if (HiddenWord == Input)
         PrintLine(TEXT("Congratulations. YOU WIN!"));
     else
