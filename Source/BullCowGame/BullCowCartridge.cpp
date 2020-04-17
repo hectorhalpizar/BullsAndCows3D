@@ -68,13 +68,19 @@ void UBullCowCartridge::ProcessGuess(const FString& Input) {
 bool UBullCowCartridge::IsIsogram(const FString& Input) const {
 
     // Extract every letter from the Input
-
+    
     // Check if that letter has already being 
-    // is already marked as registrated
+    for (int Index = 0; Index < Input.Len(); Index++) {
+        PrintLine(
+            FString::Printf(
+                TEXT("LETTER [%c]"), Input[Index]));
+
+        // is already marked as registrated
         // If it has...
             // return as false
         // if it hasn´t maked
             // Check the next input letter
+    }
 
     return true;
 }
