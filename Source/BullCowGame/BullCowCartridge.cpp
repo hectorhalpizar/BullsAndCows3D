@@ -40,9 +40,8 @@ void UBullCowCartridge::EndGame() {
 }
 
 void UBullCowCartridge::ProcessGuess(const FString& Input) {
-    if (HiddenWord == Input)
+    if (HiddenWord == Input && IsIsogram(Input))
     {
-
         PrintLine(TEXT("Congratulations. YOU WIN!"));
         EndGame();
 
@@ -64,4 +63,18 @@ void UBullCowCartridge::ProcessGuess(const FString& Input) {
         PrintLine(TEXT("GAME OVER. YOU LOSE!"));
         EndGame();
     }
+}
+
+bool UBullCowCartridge::IsIsogram(const FString& Input) {
+
+    // Extract every letter from the Input
+
+    // Check if that letter has already being 
+    // is already marked as registrated
+        // If it has...
+            // return as false
+        // if it hasn´t maked
+            // Check the next input letter
+
+    return true;
 }
