@@ -10,5 +10,10 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
-    FString HiddenWord = TEXT("subdermatoglyphic");
+    FString HiddenWord = TEXT("cake");
+
+    if (HiddenWord == Input)
+        PrintLine(TEXT("Congratulations. YOU WIN!"));
+    else
+        PrintLine(TEXT("Bummer. YOU LOSE!"));
 }
