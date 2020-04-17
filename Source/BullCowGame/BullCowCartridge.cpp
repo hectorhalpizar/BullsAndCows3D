@@ -70,17 +70,20 @@ bool UBullCowCartridge::IsIsogram(const FString& Input) const {
     // Extract every letter from the Input
     
     // Check if that letter has already being 
-    for (int32 Index = 0, Comparison = Index + 1; 
+    for (int32 Index; Index < Input.Len() - 1; Index++)
+    {
+        for (int32 Comparison = Index + 1;
             Comparison < Input.Len(); Comparison++) {
-        
-        if (Input[Index] == Input[Comparison]) {
-            return false;
+
+            if (Input[Index] == Input[Comparison]) {
+                return false;
+            }
+            // is already marked as registrated
+            // If it has...
+                // return as false
+            // if it hasn´t maked
+                // Check the next input letter
         }
-        // is already marked as registrated
-        // If it has...
-            // return as false
-        // if it hasn´t maked
-            // Check the next input letter
     }
 
     return true;
