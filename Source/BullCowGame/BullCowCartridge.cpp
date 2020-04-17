@@ -95,10 +95,9 @@ bool UBullCowCartridge::IsIsogram(const FString& Input) const {
 TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString> IsogramList) const {
     TArray <FString> Result;
 
-    for (int32 Index = 0; Index < Isograms.Num() && Index < 15; Index++) {
-        if (Isograms[Index].Len() >= 8 && Isograms[Index].Len() <= 10) {
-
-            Result.Emplace(Isograms[Index]);
+    for (FString IsogramWord : IsogramList) {
+        if (IsogramWord.Len() >= 8 && IsogramWord.Len() <= 10) {
+            Result.Emplace(IsogramWord);
         }
     }
     return Result;
