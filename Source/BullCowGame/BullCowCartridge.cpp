@@ -4,11 +4,12 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    PrintLine(TEXT("Welcome to Bull and Cows\nPress the Enter Key to continue"));
+    PrintLine(TEXT("Welcome to Bull and Cows"));
 
     InitGame();
 
     // The Game lets the Player know how many Lives has left.
+    PlayerStatus();
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -17,15 +18,14 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
     // Validate if Player´s Input is a valid isogram.
 
+    PlayerStatus();
+
     if (HiddenWord == Input)
         PrintLine(TEXT("Congratulations. YOU WIN!"));
     else
     {
         if (Input.Len() != HiddenWord.Len()) {
-            FString ErrorMessage = "The hidden word has ";
-            ErrorMessage.AppendInt(HiddenWord.Len());
-            ErrorMessage.Append(" letters.");
-            PrintLine(ErrorMessage);
+            PrintLine(FString::Printf(TEXT("The hidden word has %i letters"), HiddenWord.Len()));
         }
     }
     // Validate if player´s lives are greater than zero
@@ -36,4 +36,10 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 void UBullCowCartridge::InitGame() {
     HiddenWord = TEXT("cake");
     Lives = 5;
+}
+
+void UBullCowCartridge::PlayerStatus() {
+    PrintLine(FString::Printf(TEXT("You have %i lives left."), Lives));
+
+    PrintLine(TEXT("Please guess the word and type the Enter Key."));
 }
