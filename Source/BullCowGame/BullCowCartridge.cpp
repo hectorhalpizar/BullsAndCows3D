@@ -65,7 +65,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Input) {
     }
 }
 
-bool UBullCowCartridge::IsIsogram(const FString& Input) {
+bool UBullCowCartridge::IsIsogram(const FString& Input) const {
 
     // Extract every letter from the Input
 
