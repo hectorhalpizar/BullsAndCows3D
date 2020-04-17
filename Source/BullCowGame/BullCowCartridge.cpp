@@ -6,9 +6,8 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     Super::BeginPlay();
     PrintLine(TEXT("Welcome to Bull and Cows\nPress the Enter Key to continue"));
 
-    HiddenWord = TEXT("cake"); // Set Hidden Word
+    InitGame();
 
-    // Set Player´s Lives to 5.
     // The Game lets the Player know how many Lives has left.
 }
 
@@ -26,4 +25,9 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     // Validate if player´s lives are greater than zero
     // Let the player know that the Input is not valid
     // Decrease a life   
+}
+
+void UBullCowCartridge::InitGame() {
+    HiddenWord = TEXT("cake");
+    Lives = 5;
 }
