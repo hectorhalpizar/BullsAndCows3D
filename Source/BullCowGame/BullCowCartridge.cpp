@@ -92,7 +92,7 @@ bool UBullCowCartridge::IsIsogram(const FString& Input) const {
     return true;
 }
 
-TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString> IsogramList) const {
+TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString> & IsogramList) const {
     TArray <FString> Result;
 
     for (FString IsogramWord : IsogramList) {
