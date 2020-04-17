@@ -9,6 +9,17 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     InitGame();
     // The Game lets the Player know how many Lives has left.
+
+    for (int32 Index = 0; Index < Isograms.Num() && Index < 15; Index++) {
+        if (Isograms[Index].Len() >= 8 && Isograms[Index].Len() <= 10) {
+            
+            ValidIsograms.Emplace(Isograms[Index]);
+        }
+    }
+
+    for (int32 Index = 0; Index < ValidIsograms.Num(); Index++) {
+        PrintLine(FString::Printf(TEXT("VALID WORDS %s"), *ValidIsograms[Index]));
+    }
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
