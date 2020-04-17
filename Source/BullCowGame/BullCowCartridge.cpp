@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "BullCowCartridge.h"
+#include "HiddenWordList.h"
 
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
@@ -70,7 +71,7 @@ bool UBullCowCartridge::IsIsogram(const FString& Input) const {
     // Extract every letter from the Input
     
     // Check if that letter has already being 
-    for (int32 Index; Index < Input.Len() - 1; Index++)
+    for (int32 Index = 0; Index < Input.Len() - 1; Index++)
     {
         for (int32 Comparison = Index + 1;
             Comparison < Input.Len(); Comparison++) {
