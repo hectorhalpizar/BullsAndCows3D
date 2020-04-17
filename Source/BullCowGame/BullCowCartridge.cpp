@@ -14,14 +14,20 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
-    
+
     // Validate if Player´s Input is a valid isogram.
 
     if (HiddenWord == Input)
         PrintLine(TEXT("Congratulations. YOU WIN!"));
     else
-        PrintLine(TEXT("Bummer. YOU LOSE!"));
-
+    {
+        if (Input.Len() != HiddenWord.Len()) {
+            FString ErrorMessage = "The hidden word has ";
+            ErrorMessage.AppendInt(HiddenWord.Len());
+            ErrorMessage.Append(" letters.");
+            PrintLine(ErrorMessage);
+        }
+    }
     // Validate if player´s lives are greater than zero
     // Let the player know that the Input is not valid
     // Decrease a life   
