@@ -63,6 +63,9 @@ void UBullCowCartridge::ProcessGuess(const FString& Input) {
     if (--Lives > 0)
     {
         PlayerStatus();
+        int Cows, Bulls;
+        GetBullsCows(Input, Cows, Bulls);
+        PrintLine(FString::Printf(TEXT("You have [%i] Cows and [%i] Bulls"), Cows, Bulls));
     }
     else {
         PrintLine(TEXT("GAME OVER. YOU LOSE!"));
@@ -103,4 +106,23 @@ TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString> & Isogram
         }
     }
     return Result;
+}
+
+void UBullCowCartridge::GetBullsCows(const FString& Input, int32& BullCount, int32& CowCount) {
+    BullCount = 0;
+    CowCount = 0;
+
+    for (int32 InputIndex = 0; InputIndex < Input.Len(); InputIndex++) {
+        if (Input[InputIndex] == HiddenWord[InputIndex]) {
+            BullCount++;
+            continue;
+        }
+
+        for (int32 HiddenIndex = 0; HiddenIndex < HiddenWord.Len(); HiddenIndex++) {
+            if (Input[InputIndex] == HiddenWord[HiddenIndex]) {
+                CowCount ++;
+                break;
+            }
+        }
+    }
 }
