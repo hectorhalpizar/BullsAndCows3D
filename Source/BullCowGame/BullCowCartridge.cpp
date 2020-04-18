@@ -1,16 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "BullCowCartridge.h"
 #include "HiddenWordList.h"
+#include "Math/UnrealMathUtility.h"
 
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
     PrintLine(TEXT("Welcome to Bull and Cows"));
 
+    ValidIsograms = GetValidWords(Isograms);
+    
     InitGame();
     // The Game lets the Player know how many Lives has left.
-
-    ValidIsograms = GetValidWords(Isograms);
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -26,7 +27,8 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 }
 
 void UBullCowCartridge::InitGame() {
-    HiddenWord = TEXT("cake");
+    HiddenWord = ValidIsograms[FMath::RandRange(0, ValidIsograms.Num())];
+    PrintLine(FString::Printf(TEXT("WORD %s SELECTED."), *HiddenWord));
     Lives = HiddenWord.Len();
     bGameOver = false;
     PlayerStatus();
